@@ -1,0 +1,93 @@
+.content-box {
+    background-color: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.section-block {
+    margin-bottom: 2rem;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #DB001B;
+    margin-bottom: 1rem;
+}
+
+.section-text {
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+.values-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.value-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
+
+.check-icon {
+    color: #FBBD1E;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.value-item strong {
+    color: #333;
+}
+
+.value-item span {
+    color: #555;
+}
+
+.why-choose {
+    background: linear-gradient(135deg, #fef3f4 0%, #fff9e6 100%);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.feature-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.feature span {
+    color: #555;
+}
+
+@media (max-width: 768px) {
+    .content-box {
+        padding: 1.5rem;
+    }
+
+    .section-title {
+        font-size: 1.25rem;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+}

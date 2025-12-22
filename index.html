@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vía Bana - Heladería Artesanal</title>
+    
+    <!-- Estilos CSS -->
+    <link rel="stylesheet" href="/styles/about.css">
+    <link rel="stylesheet" href="/styles/card.css">
+    <link rel="stylesheet" href="/styles/contact.css">
+    <link rel="stylesheet" href="/styles/faqs.css">
+    <link rel="stylesheet" href="/styles/footer.css">
+    <link rel="stylesheet" href="/styles/global.css">
+    <link rel="stylesheet" href="/styles/header.css">
+    <link rel="stylesheet" href="/styles/home.css">
+    
+    <!-- React -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    
+    <!-- TODO EN UN SOLO SCRIPT -->
+    <script type="text/babel">
+        const { useState } = React;
+
+        // ============= COMPONENTE HEADER =============
+        const Header = ({ currentPage, setCurrentPage }) => {
+          const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+          const navItems = [
+            { id: 'inicio', label: 'Inicio' },
+            { id: 'nosotros', label: 'Sobre Nosotros' },
+            { id: 'contacto', label: 'Contacto' }
+          ];
+
+          return (
+            <header className="header">
+              <div className="container">
+                <div className="header-content">
+                  <div className="logo-section">
+                    <div image="logo-circle">
+                      <span className="logo-text">VB</span>
+                    </div>
+                    <h1 className="site-title">Vía Bana</h1>
+                  </div>
+
+                  <nav className="nav-desktop">
+                    {navItems.map(item => (
+                      <button
+                        key={item.id}
+                        onClick={() => setCurrentPage(item.id)}
+                        className={`nav-btn ${currentPage === item.id ? 'active' : ''}`}
+                      >
+                        {item.label}
+                      </button>
+                    ))}
+                  </nav>
+
+                  <button
+                    className="menu-toggle"
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                  >
+                    {isMenuOpen ? '✕' : '☰'}
+                  </button>
+                </div>
+
+                {isMenuOpen && (
+                  <nav className="nav-mobile">
+                    {navItems.map(item => (
+                      <button
+                        key={item.id}
+                        onClick={() => {
+                          setCurrentPage(item.id);
+                          setIsMenuOpen(false);
+                        }}
+                        className={`nav-btn-mobile ${currentPage === item.id ? 'active' : ''}`}
+                      >
+                        {item.label}
+                      </button>
+                    ))}
+                  </nav>
+                )}
+              </div>
+            </header>
+          );
+        };
+
+        // ============= COMPONENTE FOOTER =============
+        const Footer = ({ setCurrentPage }) => {
+          return (
+            <footer className="footer">
+              <div className="container">
+                <div className="footer-grid">
+                  <div className="footer-column">
+                    <h3 className="footer-title">Enlaces</h3>
+                    <ul className="footer-links">
+                      <li>
+                        <button onClick={() => setCurrentPage('nosotros')} className="footer-link">
+                          Sobre Nosotros
+                        </button>
+                      </li>
+                      <li>
+                        <button onClick={() => setCurrentPage('contacto')} className="footer-link">
+                          Contacto
+                        </button>
+                      </li>
+                      <li>
+                        <button onClick={() => setCurrentPage('faqs')} className="footer-link">
+                          Preguntas Frecuentes
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="footer-column">
+                    <h3 className="footer-title">Contacto</h3>
+                    <ul className="footer-contact">
+                      <li className="contact-item">
+                        <span className="contact-icon">📍</span>
+                        <span>Av. Principal 1234, Olavarría, Buenos Aires</span>
+                      </li>
+                      <li className="contact-item">
+                        <span className="contact-icon">📞</span>
+                        <a href="tel:+542284123456">+54 2284 123-456</a>
+                      </li>
+                      <li className="contact-item">
+                        <span className="contact-icon">✉️</span>
+                        <a href="mailto:info@viabana.com">info@viabana.com</a>
+                      </li>
+                      <li className="contact-item">
+                        <span className="contact-icon">💬</span>
+                        <a href="https://wa.me/5492284676102" target="_blank" rel="noopener noreferrer">
+                          WhatsApp
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="footer-column">
+                    <h3 className="footer-title">Vía Bana</h3>
+                    <p className="footer-description">
+                      Los mejores helados artesanales de Olavarría. Sabores únicos,
+                      calidad premium y atención excepcional.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="footer-bottom">
+                  <p>&copy; 2025 M. Todos los derechos reservados.</p>
+                </div>
+              </div>
+            </footer>
+          );
+        };
+
+        // ============= COMPONENTE CARD =============
+        const Card = ({ title, description, image, price }) => {
+  return (
+    <div className="card">
+      <div className="card-image">
+        {image.startsWith('imagenes/')
+          ? <img src={image} alt={title} />
+          : <span className="emoji-icon">{image}</span>
+        }
+      </div>
+      <div className="card-content">
+        <h3 className="card-title">{title}</h3>
+        <p className="card-description">{description}</p>
+        {price && <p className="card-price">${price}</p>}
+      </div>
+    </div>
+  );
+};
+
+
+
+        // ============= PÁGINA INICIO =============
+        const PaginaInicio = () => {
+          const sabores = [
+            { title: 'Dulce de Leche', description: 'Clásico argentino cremoso', image: "imagenes/ddl.jpg" },
+            { title: 'Chocolate', description: 'Intenso y suave', image: "imagenes/chocolate.png" },
+            { title: 'Frutilla a la crema', description: 'Con trozos de fruta natural', image: "imagenes/frutillaCrema.png" },
+            { title: 'Limón', description: 'Refrescante y natural', image: "imagenes/limon.png" },
+            { title: 'Menta Granizada', description: 'Con chips de chocolate', image: "imagenes/mentaGranizada.png" },
+            { title: 'Vainilla', description: 'Tradicional y delicioso', image: "imagenes/vainilla.png" },
+            { title: 'Banana Split', description: 'Banana con DDL', image: "imagenes/bananaConDdl.png" },
+            { title: 'Capuccino Granizado', description: 'Café y chocolate', image: "imagenes/capuccinoGranizado.png" },
+            { title: 'Frutilla al agua', description: 'Con trozos de fruta natural', image: "imagenes/frutillaAgua.png" },
+            { title: 'Maracuyá', description: 'Tropical y refrescante', image: "imagenes/maracuya.png" },
+            { title: 'DDL granizado', description: 'DDL y chocolate', image: "imagenes/ddlGranizado.png" },
+            { title: 'Crema Flan', description: 'El flan echo helado', image: "imagenes/cremaFlan.png" },
+            { title: 'Durazno', description: 'Con trozos de fruta natural', image: "imagenes/durazno.png" },
+            { title: 'Granizado', description: 'Americana y chocolate', image: "imagenes/granizado.png" },
+            { title: 'Frutos Rojos al agua', description: 'Con trozos de fruta natural', image: "imagenes/frutosRojos.png" },
+            { title: 'Nutribana', description: 'Crema Americana multicolor', image: "imagenes/nutribana.png" },
+            { title: 'Crema Cookie', description: 'Americana con galletitas Oreo', image: "imagenes/cremaCookie.png" },
+            { title: 'Menta granizada', description: 'Menta y chocolate', image: "imagenes/mentaGranizada.png" },
+          ];
+
+          const especiales = [
+            { title: 'Palito Bombón', description: 'Americana cubierta de chocolate', image: 'imagenes/palitoBombon.png', price: '6500' },
+            { title: 'Martes 2x1', description: 'Todos los cucuruchos', image: '🎉', price: '1200' },
+            { title: 'Cumpleaños', description: 'Torta helada 2kg', image: '🎂', price: '8900' },
+            { title: 'Happy Hour', description: '14-17hs 20% OFF', image: '⏰' },
+            { title: 'Pack Verano', description: '2kg + 4 palitos', image: '🏖️', price: '7800' }
+          ];
+
+          const promociones = [
+            { title: 'Combo Familiar', description: '1kg + 2 cucuruchos', image: '👨‍👩‍👧‍👦', price: '6500' },
+            { title: 'Martes 2x1', description: 'Todos los cucuruchos', image: '🎉', price: '1200' },
+            { title: 'Cumpleaños', description: 'Torta helada 2kg', image: '🎂', price: '8900' },
+            { title: 'Happy Hour', description: '14-17hs 20% OFF', image: '⏰' },
+            { title: 'Pack Verano', description: '2kg + 4 palitos', image: '🏖️', price: '7800' }
+          ];
+
+          const precios = [
+            { title: 'Cucurucho Simple', description: '1 bocha', image: '🍦', price: '800' },
+            { title: 'Cucurucho Doble', description: '2 bochas', image: '🍦', price: '1200' },
+            { title: 'Pote 1/4kg', description: 'Hasta 2 sabores', image: '🥡', price: '2200' },
+            { title: 'Pote 1/2kg', description: 'Hasta 3 sabores', image: '🥡', price: '3800' },
+            { title: 'Pote 1kg', description: 'Hasta 4 sabores', image: '🥡', price: '6800' },
+            { title: 'Palito Premium', description: 'Chocolate o dulce de leche', image: '🍡', price: '950' },
+            { title: 'Sundae', description: 'Con salsa y crema', image: '🍨', price: '1800' },
+            { title: 'Milkshake', description: 'Sabor a elección', image: '🥤', price: '1500' },
+            { title: 'Banana Split', description: 'Clásico con 3 bochas', image: '🍌', price: '2400' },
+            { title: 'Torta Helada 1kg', description: 'Personalizada', image: '🎂', price: '5500' }
+          ];
+
+          return (
+            <div className="container page-content">
+              <div className="hero">
+                <h2 className="hero-title">¡Bienvenidos a Vía Bana!</h2>
+                <p className="hero-subtitle">Los mejores helados artesanales de Olavarría</p>
+                <p className="hero-text">Más de 20 años endulzando tus momentos especiales</p>
+              </div>
+
+              <section className="section">
+                <h2 className="section-header">Nuestros Sabores</h2>
+                <div className="cards-grid">
+                  {sabores.map((sabor, index) => (
+                    <Card key={index} {...sabor} />
+                  ))}
+                </div>
+              </section>
+
+              <section className="section promo-section">
+                <h2 className="section-header promo-header">Promociones Especiales</h2>
+                <div className="cards-grid">
+                  {promociones.map((promo, index) => (
+                    <Card key={index} {...promo} />
+                  ))}
+                </div>
+              </section>
+
+              <section className="section">
+                <h2 className="section-header">Precios Regulares</h2>
+                <div className="cards-grid">
+                  {precios.map((precio, index) => (
+                    <Card key={index} {...precio} />
+                  ))}
+                </div>
+              </section>
+            </div>
+          );
+        };
+
+        // ============= PÁGINA SOBRE NOSOTROS =============
+        const PaginaNosotros = () => {
+          return (
+            <div className="container page-content">
+              <div className="content-wrapper">
+                <h2 className="page-title">Sobre Nosotros</h2>
+                
+                <div className="content-box">
+                  <div className="section-block">
+                    <h3 className="section-title">Nuestra Historia</h3>
+                    <p className="section-text">
+                      Vía Bana nació en 2004 con el sueño de crear los mejores helados artesanales
+                      de Olavarría. Comenzamos como una pequeña heladería familiar y, gracias a la
+                      confianza de nuestros clientes, nos hemos convertido en un referente de calidad
+                      y sabor en la región.
+                    </p>
+                    <p className="section-text">
+                      Durante más de 20 años, hemos mantenido nuestro compromiso con la excelencia,
+                      utilizando ingredientes de primera calidad y recetas artesanales que hacen
+                      de cada bocado una experiencia única.
+                    </p>
+                  </div>
+
+                  <div className="section-block">
+                    <h3 className="section-title">Nuestra Misión</h3>
+                    <p className="section-text">
+                      Ofrecer helados artesanales de la más alta calidad, elaborados con ingredientes
+                      naturales y mucho amor, para endulzar los momentos especiales de nuestros clientes
+                      y crear recuerdos inolvidables.
+                    </p>
+                  </div>
+
+                  <div className="section-block">
+                    <h3 className="section-title">Nuestros Valores</h3>
+                    <ul className="values-list">
+                      <li className="value-item">
+                        <span className="check-icon">✓</span>
+                        <div>
+                          <strong>Calidad:</strong>
+                          <span> Utilizamos solo los mejores ingredientes</span>
+                        </div>
+                      </li>
+                      <li className="value-item">
+                        <span className="check-icon">✓</span>
+                        <div>
+                          <strong>Tradición:</strong>
+                          <span> Recetas artesanales transmitidas por generaciones</span>
+                        </div>
+                      </li>
+                      <li className="value-item">
+                        <span className="check-icon">✓</span>
+                        <div>
+                          <strong>Innovación:</strong>
+                          <span> Constantemente creamos nuevos sabores</span>
+                        </div>
+                      </li>
+                      <li className="value-item">
+                        <span className="check-icon">✓</span>
+                        <div>
+                          <strong>Compromiso:</strong>
+                          <span> Con nuestros clientes y la comunidad</span>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="why-choose">
+                    <h3 className="section-title">¿Por qué elegirnos?</h3>
+                    <div className="features-grid">
+                      <div className="feature">
+                        <span className="feature-icon">🥇</span>
+                        <span>Más de 20 años de experiencia</span>
+                      </div>
+                      <div className="feature">
+                        <span className="feature-icon">🏆</span>
+                        <span>Premios locales de calidad</span>
+                      </div>
+                      <div className="feature">
+                        <span className="feature-icon">👨‍🍳</span>
+                        <span>Maestros heladeros certificados</span>
+                      </div>
+                      <div className="feature">
+                        <span className="feature-icon">🌱</span>
+                        <span>Ingredientes naturales</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        };
+
+        // ============= PÁGINA CONTACTO =============
+        const PaginaContacto = () => {
+          const [formData, setFormData] = useState({
+            nombre: '',
+            email: '',
+            telefono: '',
+            mensaje: ''
+          });
+
+          const [enviado, setEnviado] = useState(false);
+
+          const handleChange = (e) => {
+            setFormData({
+              ...formData,
+              [e.target.name]: e.target.value
+            });
+          };
+
+          const handleSubmit = (e) => {
+            e.preventDefault();
+            setEnviado(true);
+            setTimeout(() => {
+              setEnviado(false);
+              setFormData({ nombre: '', email: '', telefono: '', mensaje: '' });
+            }, 3000);
+          };
+
+          return (
+            <div className="container page-content">
+              <div className="content-wrapper">
+                <h2 className="page-title">Contacto</h2>
+
+                <div className="contact-grid">
+                  <div className="contact-form-section">
+                    <h3 className="section-title">Envíanos un mensaje</h3>
+                    
+                    {enviado && (
+                      <div className="success-message">
+                        ¡Mensaje enviado con éxito! Te contactaremos pronto.
+                      </div>
+                    )}
+
+                    <form onSubmit={handleSubmit} className="contact-form">
+                      <div className="form-group">
+                        <label className="form-label">Nombre *</label>
+                        <input
+                          type="text"
+                          name="nombre"
+                          value={formData.nombre}
+                          onChange={handleChange}
+                          required
+                          className="form-input"
+                          placeholder="Tu nombre completo"
+                        />
+                      </div>
+
+                      <div className="form-group">
+                        <label className="form-label">Email *</label>
+                        <input
+                          type="email"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleChange}
+                          required
+                          className="form-input"
+                          placeholder="tu@email.com"
+                        />
+                      </div>
+
+                      <div className="form-group">
+                        <label className="form-label">Teléfono</label>
+                        <input
+                          type="tel"
+                          name="telefono"
+                          value={formData.telefono}
+                          onChange={handleChange}
+                          className="form-input"
+                          placeholder="+54 2284 123-456"
+                        />
+                      </div>
+
+                      <div className="form-group">
+                        <label className="form-label">Mensaje *</label>
+                        <textarea
+                          name="mensaje"
+                          value={formData.mensaje}
+                          onChange={handleChange}
+                          required
+                          rows="5"
+                          className="form-textarea"
+                          placeholder="Escribe tu mensaje aquí..."
+                        />
+                      </div>
+
+                      <button type="submit" className="submit-btn">
+                        Enviar Mensaje
+                      </button>
+                    </form>
+                  </div>
+
+                  <div className="contact-info-section">
+                    <div className="info-box">
+                      <h3 className="section-title">Información de Contacto</h3>
+                      <div className="info-list">
+                        <div className="info-item">
+                          <span className="info-icon">📍</span>
+                          <div>
+                            <p className="info-label">Dirección</p>
+                            <p className="info-detail">Av. Principal 1234</p>
+                            <p className="info-detail">Olavarría, Buenos Aires</p>
+                          </div>
+                        </div>
+
+                        <div className="info-item">
+                          <span className="info-icon">📞</span>
+                          <div>
+                            <p className="info-label">Teléfono</p>
+                            <a href="tel:+542284123456" className="info-link">
+                              +54 2284 123-456
+                            </a>
+                          </div>
+                        </div>
+
+                        <div className="info-item">
+                          <span className="info-icon">💬</span>
+                          <div>
+                            <p className="info-label">WhatsApp</p>
+                            <a href="https://wa.me/5492284123456" target="_blank" rel="noopener noreferrer" className="info-link">
+                              +54 9 2284 123-456
+                            </a>
+                          </div>
+                        </div>
+
+                        <div className="info-item">
+                          <span className="info-icon">✉️</span>
+                          <div>
+                            <p className="info-label">Email</p>
+                            <a href="mailto:info@viabana.com" className="info-link">
+                              info@viabana.com
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="hours-box">
+                      <h3 className="hours-title">Horarios de Atención</h3>
+                      <div className="hours-list">
+                        <p><strong>Lunes a Viernes:</strong> 10:00 - 23:00</p>
+                        <p><strong>Sábados:</strong> 10:00 - 00:00</p>
+                        <p><strong>Domingos:</strong> 14:00 - 23:00</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        };
+
+        // ============= PÁGINA FAQS =============
+        const PaginaFAQs = () => {
+          const faqs = [
+            {
+              pregunta: '¿Cuáles son los métodos de pago aceptados?',
+              respuesta: 'Aceptamos efectivo, tarjetas de débito, crédito (todas) y transferencias bancarias.'
+            },
+            {
+              pregunta: '¿Hacen envíos a domicilio?',
+              respuesta: 'Sí, realizamos envíos a domicilio en Olavarría. El costo varía según la distancia. Consulta por WhatsApp.'
+            },
+            {
+              pregunta: '¿Tienen opciones sin azúcar?',
+              respuesta: 'Sí, contamos con una línea de helados sin azúcar añadida, endulzados con stevia.'
+            },
+            {
+              pregunta: '¿Puedo hacer pedidos para eventos?',
+              respuesta: 'Por supuesto. Hacemos tortas heladas personalizadas y potes para eventos. Te recomendamos hacer el pedido con 48hs de anticipación.'
+            },
+            {
+              pregunta: '¿Los helados son aptos para celíacos?',
+              respuesta: 'Tenemos sabores aptos para celíacos. Consultá en el local por los sabores disponibles libres de gluten.'
+            },
+            {
+              pregunta: '¿Ofrecen descuentos para compras mayoristas?',
+              respuesta: 'Sí, contamos con precios especiales para compras a partir de 5kg. Contactanos para más información.'
+            }
+          ];
+
+          const [abierto, setAbierto] = useState(null);
+
+          return (
+            <div className="container page-content">
+              <div className="content-wrapper-narrow">
+                <h2 className="page-title">Preguntas Frecuentes</h2>
+                
+                <div className="faqs-list">
+                  {faqs.map((faq, index) => (
+                    <div key={index} className="faq-item">
+                      <button
+                        onClick={() => setAbierto(abierto === index ? null : index)}
+                        className="faq-question"
+                      >
+                        <span className="faq-text">{faq.pregunta}</span>
+                        <span className="faq-icon">
+                          {abierto === index ? '−' : '+'}
+                        </span>
+                      </button>
+                      {abierto === index && (
+                        <div className="faq-answer">
+                          <p>{faq.respuesta}</p>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+
+                <div className="faq-cta">
+                  <h3 className="cta-title">¿No encontraste tu respuesta?</h3>
+                  <p className="cta-text">Contactanos y con gusto te ayudaremos</p>
+                  <div className="cta-buttons">
+                    <a href="https://wa.me/5492284123456" target="_blank" rel="noopener noreferrer" className="cta-btn-primary">
+                      WhatsApp
+                    </a>
+                    <a href="mailto:info@viabana.com" className="cta-btn-secondary">
+                      Email
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        };
+
+        // ============= APP PRINCIPAL =============
+        const App = () => {
+          const [currentPage, setCurrentPage] = useState('inicio');
+
+          const renderPage = () => {
+            switch (currentPage) {
+              case 'inicio':
+                return <PaginaInicio />;
+              case 'nosotros':
+                return <PaginaNosotros />;
+              case 'contacto':
+                return <PaginaContacto />;
+              case 'faqs':
+                return <PaginaFAQs />;
+              default:
+                return <PaginaInicio />;
+            }
+          };
+
+          return (
+            <>
+              <Header currentPage={currentPage} setCurrentPage={setCurrentPage} />
+              {renderPage()}
+              <Footer setCurrentPage={setCurrentPage} />
+            </>
+          );
+        };
+
+        // ============= RENDERIZAR =============
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
+
+<!-- estructura del proyecto 
+```
+
+---
+
+## 📂 Estructura final del proyecto:
+```
+heladeria/
+├── index.html
+├── app.jsx
+├── components/
+│   ├── Header.jsx
+│   ├── Footer.jsx
+│   └── Card.jsx
+├── pages/
+│   ├── aboutUs.jsx
+│   ├── contact.jsx
+│   └── faqs.jsx
+├── styles/
+│   ├── global.css
+│   ├── header.css
+│   ├── footer.css
+│   ├── card.css
+│   ├── home.css
+│   ├── about.css
+│   ├── contact.css
+│   └── faqs.css
+└── imagenes/
+    └── (aquí van las imágenes cuando las tengas)
+    -->
