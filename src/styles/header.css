@@ -1,0 +1,131 @@
+.header {
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.logo-circle {
+    width: 3rem;
+    height: 3rem;
+    background: linear-gradient(135deg, #DB001B 0%, #b8001a 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-text {
+    color: white;
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.site-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #DB001B;
+}
+
+.nav-desktop {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #333;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.nav-btn:hover {
+    background-color: #fef3f4;
+}
+
+.nav-btn.active {
+    background-color: #DB001B;
+    color: white;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.75rem;
+    cursor: pointer;
+    color: #333;
+}
+
+.nav-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e0e0e0;
+}
+
+.nav-btn-mobile {
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #333;
+    transition: all 0.3s ease;
+    text-align: left;
+    font-size: 1rem;
+}
+
+.nav-btn-mobile:hover {
+    background-color: #fef3f4;
+}
+
+.nav-btn-mobile.active {
+    background-color: #DB001B;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .nav-desktop {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .site-title {
+        font-size: 1.25rem;
+    }
+
+    .logo-circle {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .logo-text {
+        font-size: 1rem;
+    }
+}
