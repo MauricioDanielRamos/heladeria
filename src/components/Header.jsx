@@ -1,5 +1,4 @@
 import '../styles/header.css';
-
 import { useState } from "react";
 
 export default function Header({ currentPage, setCurrentPage }) {
@@ -17,11 +16,11 @@ export default function Header({ currentPage, setCurrentPage }) {
       <div className="container">
         <div className="header-content">
           <div className="logo-section">
-            <div className="logo-circle">
-              <span className="logo-text">VB</span>
-            </div>
-            <h1 className="site-title">Vía Bana</h1>
-          </div>
+  <img src="/imagenes/logoViaBana.png" alt="Vía Bana Ola" className="logo-img" />
+
+  <h1 className="site-title">Vía Bana Ola</h1>
+</div>
+
 
           <nav className="nav-desktop">
             {navItems.map(item => (

@@ -1,7 +1,7 @@
 .contact-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    display: flex;
     gap: 2rem;
+    align-items: stretch;
 }
 
 .contact-form-section {
@@ -9,6 +9,13 @@
     border-radius: 0.75rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 1.5rem;
+}
+
+.contact-form-section,
+.contact-info-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .success-message {
@@ -84,6 +91,7 @@
 }
 
 .info-box {
+    flex-grow: 1;
     background-color: white;
     border-radius: 0.75rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -128,12 +136,24 @@
     color: #DB001B;
 }
 
+.required {
+    color: #db001b;
+    font-weight: 900;
+}
+
+.error-text {
+    color: #db001b;
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+}
+
 .hours-box {
     background: linear-gradient(135deg, #DB001B 0%, #b8001a 100%);
     color: white;
     border-radius: 0.75rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 1.5rem;
+    margin-top: 1.5rem;
 }
 
 .hours-title {
@@ -153,6 +173,40 @@
 }
 
 .hours-list strong {
+    font-weight: 600;
+}
+
+.required {
+    color: red;
+    font-weight: 900;
+}
+
+.error-text {
+    color: #DB001B;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+.input-error {
+    border-color: #DB001B !important;
+    background: #ffe6ea;
+}
+
+.submit-btn:disabled {
+    background-color: #bbb;
+    cursor: not-allowed;
+}
+
+/* Contador de caracteres */
+.char-count {
+    font-size: 0.85rem;
+    text-align: right;
+    margin-top: 3px;
+    color: #666;
+}
+
+.char-count.warning {
+    color: #DB001B;
     font-weight: 600;
 }
 

@@ -81,10 +81,11 @@
 }
 
 .cta-btn-primary {
-    background-color: white;
-    color: #DB001B;
+    background-color: rgb(21, 155, 43);
+    color: #faf5f5;
     padding: 0.75rem 1.5rem;
     border-radius: 0.5rem;
+    border: 2px solid rgb(11, 12, 11);
     font-weight: 600;
     text-decoration: none;
     transition: all 0.3s ease;

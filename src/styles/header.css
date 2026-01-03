@@ -35,6 +35,12 @@
     font-size: 1.25rem;
 }
 
+.logo-img {
+    height: 3rem;
+    width: auto;
+    object-fit: contain;
+}
+
 .site-title {
     font-size: 1.5rem;
     font-weight: bold;
@@ -63,7 +69,7 @@
 }
 
 .nav-btn.active {
-    background-color: #DB001B;
+    background-color: #FBBD1E;
     color: white;
 }
 
@@ -106,6 +112,14 @@
     background-color: #DB001B;
     color: white;
 }
+
+.logo-img {
+    height: 3rem;
+    width: auto;
+    border-radius: 0.5rem;
+    object-fit: contain;
+}
+
 
 @media (max-width: 768px) {
     .nav-desktop {

@@ -35,25 +35,26 @@ export default function Home() {
          // ];
 
           const promociones = [
-            { title: 'Combo Familiar', description: '2 kg', image: 'imagenes/dosKilos.jpg', price: '15500' },
-            { title: 'Kilo y medio', description: '1 kg y 1/2 kg', image: 'imagenes/kiloMasMedioKilo.png', price: '12500' },
-            { title: '1 kg + 6 conos', description: '1 kg + 6 conos', image: 'imagenes/kiloMasSeisConos.png', price: '9000' },
-            { title: '2 Cuartos', description: '2 potes de 1/4 kg', image: 'imagenes/dosCuartos.jpg', price: '5500' },
+            { title: 'Combo Familiar', description: '2 kg', image: 'imagenes/dosKilos.jpg', price: '15.500' },
+            { title: 'Un Kilo y medio', description: '1 kg y 1/2 kg', image: 'imagenes/kiloMasMedioKilo.png', price: '12.500' },
+            { title: '1 kg + 6 conos', description: '1 kg + 6 conos', image: 'imagenes/kiloMasSeisConos.png', price: '9.000' },
+            { title: '2 Cuartos', description: '2 potes de 1/4 kg', image: 'imagenes/dosCuartos.jpg', price: '5.500' },
+            { title: '2 potes de 1/2 kg', description: '2 potes de 1/2 kg', image: 'imagenes/dosDeMedioKilo.jpg', price: '9.500' },
             //{ title: 'Pack Verano', description: '2kg + 4 palitos', image: '🏖️', price: '7800' }
           ];
 
           const precios = [
-            { title: 'Cucurucho Simple', description: '1 bocha', image: 'imagenes/conoUnaBocha.jpg', price: '1500' },
-            { title: 'Cucurucho Doble', description: '2 bochas', image: 'imagenes/conoDosBochas.jpg', price: '2000' },
-            { title: 'Cucurucho Triple', description: '3 bochas', image: 'imagenes/conoTresBochas.jpg', price: '2500' },
-            { title: 'Pote 1/4kg', description: 'Hasta 2 sabores', image: 'imagenes/cuartoKilo.jpg', price: '3000' },
-            { title: 'Pote 1/2kg', description: 'Hasta 3 sabores', image: 'imagenes/medioKilo.jpg', price: '5000' },
-            { title: 'Pote 1kg', description: 'Hasta 4 sabores', image: 'imagenes/kilo.jpg', price: '8000' },
+            { title: 'Cucurucho Simple', description: '1 bocha', image: 'imagenes/conoUnaBocha.jpg', price: '1.500' },
+            { title: 'Cucurucho Doble', description: '2 bochas', image: 'imagenes/conoDosBochas.jpg', price: '2.000' },
+            { title: 'Cucurucho Triple', description: '3 bochas', image: 'imagenes/conoTresBochas.jpg', price: '2.500' },
+            { title: 'Pote 1/4kg', description: 'Hasta 2 sabores', image: 'imagenes/cuartoKilo.jpg', price: '3.000' },
+            { title: 'Pote 1/2kg', description: 'Hasta 3 sabores', image: 'imagenes/medioKilo.jpg', price: '5.000' },
+            { title: 'Pote 1kg', description: 'Hasta 4 sabores', image: 'imagenes/kilo.jpg', price: '8.000' },
             { title: 'Palito Bombon', description: 'Chocolate y americana', image: 'imagenes/palitoBombon.png', price: '700' },
             { title: 'Palito agua limon', description: 'Limon refrescante', image: 'imagenes/palitoAguaLimon.png', price: '550' },
-            { title: 'Palito agua frtutilla', description: 'Frutilla refrescante', image: 'imagenes/palitoAguaFrutilla.png', price: '550' },
+            { title: 'Palito agua frutilla', description: 'Frutilla refrescante', image: 'imagenes/palitoAguaFrutilla.png', price: '550' },
             //{ title: 'Banana Split', description: 'Clásico con 3 bochas', image: '🍌', price: '550' },
-            { title: 'Crocantino', description: 'Chocolate, mani y dd', image: 'imagenes/crocantino.png', price: '7500' }
+            { title: 'Crocantino', description: 'Chocolate, mani y ddl', image: 'imagenes/crocantino.png', price: '7.500' }
           ];
 
           return (

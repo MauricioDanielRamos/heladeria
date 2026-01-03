@@ -1,13 +1,13 @@
 .card {
     background-color: white;
     border-radius: 0.75rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     overflow: hidden;
     transition: all 0.3s ease;
 }
 
 .card:hover {
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.40);
     transform: translateY(-5px);
 }
 
@@ -20,9 +20,11 @@
 }
 
 .card-image img {
-    max-width: 70%;
-    max-height: 70%;
+    width: auto;
+    height: 100%;
     object-fit: contain;
+    display: block;
+    margin: 0 auto;
 }
 
 .emoji-icon {
