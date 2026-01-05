@@ -66,9 +66,6 @@ export default function Faqs() {
                     <a href="https://wa.me/5492284676102" target="_blank" rel="noopener noreferrer" className="cta-btn-primary">
                       WhatsApp
                     </a>
-                    {/*<a href="mailto:info@viabana.com" className="cta-btn-secondary">
-                      Email
-                    </a>*/}
                   </div>
                 </div>
               </div>

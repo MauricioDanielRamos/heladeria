@@ -12,7 +12,7 @@ export default function Contact() {
     const [errors, setErrors] = useState({});
     const [enviado, setEnviado] = useState(false);
 
-    // 🔹 Validación pura (NO usa setState)
+
     const validar = (data = formData) => {
         const newErrors = {};
 
@@ -43,7 +43,7 @@ export default function Contact() {
         return newErrors;
     };
 
-    // 🔹 Actualiza errores en tiempo real
+
     useEffect(() => {
         setErrors(validar(formData));
     }, [formData]);
@@ -74,7 +74,7 @@ export default function Contact() {
         }, 3000);
     };
 
-    // 🔹 Botón deshabilitado SIN provocar renders infinitos
+
     const formValido =
         Object.keys(errors).length === 0 &&
         formData.nombre &&
@@ -86,9 +86,7 @@ export default function Contact() {
         <div className="container page-content">
             <div className="content-wrapper">
                 <h2 className="page-title">Contacto</h2>
-
                 <div className="contact-grid">
-                    {/* FORMULARIO */}
                     <div className="contact-form-section">
                         <h3 className="section-title">Envíanos un mensaje</h3>
 
@@ -100,7 +98,6 @@ export default function Contact() {
                         )}
 
                         <form onSubmit={handleSubmit} className="contact-form">
-                            {/* NOMBRE */}
                             <div className="form-group">
                                 <label className="form-label">
                                     Nombre <span className="required">*</span>
@@ -134,7 +131,6 @@ export default function Contact() {
                                 )}
                             </div>
 
-                            {/* EMAIL */}
                             <div className="form-group">
                                 <label className="form-label">
                                     Email <span className="required">*</span>
@@ -163,7 +159,6 @@ export default function Contact() {
                                 )}
                             </div>
 
-                            {/* TELÉFONO */}
                             <div className="form-group">
                                 <label className="form-label">
                                     Teléfono <span className="required">*</span>
@@ -222,7 +217,6 @@ export default function Contact() {
                                     }`}
                                 />
 
-                                {/* 🔹 Contador */}
                                 <div
                                     className={`char-count ${
                                         formData.mensaje.length < 10 ||
@@ -317,16 +311,27 @@ export default function Contact() {
                                 </div>
 
                                 <div className="info-item">
-                                    <span className="info-icon">✉️</span>
-                                    <div>
-                                        <p className="info-label">Email</p>
-                                        <a
-                                            href="mailto:info@viabana.com"
-                                            className="info-link"
-                                        >
-                                            info@viabana.com
-                                        </a>
-                                    </div>
+                                    <span className="info-icon">👥</span>
+
+                                    <a
+                                        href="https://chat.whatsapp.com/HNfNHcv76cNDdYTHHhyk3N"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="info-link"
+                                    >
+                                        Únete a nuestro grupo de WhatsApp
+                                    </a>
+                                </div>
+
+                                <div className="info-item">
+                                    <img
+                                        src="/imagenes/codigoQR.jpg"
+                                        alt="QR Grupo WhatsApp"
+                                        style={{
+                                            width: "120px",
+                                            borderRadius: "10px",
+                                        }}
+                                    />
                                 </div>
                             </div>
                         </div>

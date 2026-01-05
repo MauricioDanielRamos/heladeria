@@ -1,7 +1,7 @@
 .contact-grid {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 2rem;
-    align-items: stretch;
 }
 
 .contact-form-section {
@@ -197,7 +197,6 @@
     cursor: not-allowed;
 }
 
-/* Contador de caracteres */
 .char-count {
     font-size: 0.85rem;
     text-align: right;
@@ -213,5 +212,13 @@
 @media (max-width: 768px) {
     .contact-grid {
         grid-template-columns: 1fr;
+    }
+
+    .contact-form-section {
+        order: 1;
+    }
+
+    .contact-info-section {
+        order: 2;
     }
 }

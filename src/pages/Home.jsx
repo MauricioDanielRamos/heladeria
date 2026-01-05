@@ -26,21 +26,12 @@ export default function Home() {
             { title: 'palito de frutilla', description: 'Frutilla al agua', image: "imagenes/palitoAguaFrutilla.png" },
           ];
 
-          //const especiales = [
-          //  { title: 'Palito Bombón', description: 'Americana cubierta de chocolate', image: //'imagenes/palitoBombon.png', price: '15500' },
-          //  { title: 'Martes 2x1', description: 'Todos los cucuruchos', image: '🎉', price: '1200' },
-          //  { title: 'Cumpleaños', description: 'Torta helada 2kg', image: '🎂', price: '8900' },
-          //  { title: 'Happy Hour', description: '14-17hs 20% OFF', image: '⏰' },
-          //  { title: 'Pack Verano', description: '2kg + 4 palitos', image: '🏖️', price: '78800' }
-         // ];
-
           const promociones = [
             { title: 'Combo Familiar', description: '2 kg', image: 'imagenes/dosKilos.jpg', price: '15.500' },
             { title: 'Un Kilo y medio', description: '1 kg y 1/2 kg', image: 'imagenes/kiloMasMedioKilo.png', price: '12.500' },
             { title: '1 kg + 6 conos', description: '1 kg + 6 conos', image: 'imagenes/kiloMasSeisConos.png', price: '9.000' },
             { title: '2 Cuartos', description: '2 potes de 1/4 kg', image: 'imagenes/dosCuartos.jpg', price: '5.500' },
             { title: '2 potes de 1/2 kg', description: '2 potes de 1/2 kg', image: 'imagenes/dosDeMedioKilo.jpg', price: '9.500' },
-            //{ title: 'Pack Verano', description: '2kg + 4 palitos', image: '🏖️', price: '7800' }
           ];
 
           const precios = [
@@ -53,7 +44,6 @@ export default function Home() {
             { title: 'Palito Bombon', description: 'Chocolate y americana', image: 'imagenes/palitoBombon.png', price: '700' },
             { title: 'Palito agua limon', description: 'Limon refrescante', image: 'imagenes/palitoAguaLimon.png', price: '550' },
             { title: 'Palito agua frutilla', description: 'Frutilla refrescante', image: 'imagenes/palitoAguaFrutilla.png', price: '550' },
-            //{ title: 'Banana Split', description: 'Clásico con 3 bochas', image: '🍌', price: '550' },
             { title: 'Crocantino', description: 'Chocolate, mani y ddl', image: 'imagenes/crocantino.png', price: '7.500' }
           ];
 
